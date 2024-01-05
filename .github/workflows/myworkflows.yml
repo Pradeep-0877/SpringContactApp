@@ -1,9 +1,8 @@
 name: my-demo-github-actions
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [ master ]
+  
 jobs: 
    Build: 
       runs-on: ubuntu-latest
