@@ -23,5 +23,5 @@ jobs:
              name: spring-contact-app
              path: target/*.war
        - name: deploy to Tomcat
-         run: curl -v -u pradeep:pradeep -T /home/runner/work/spring3-mvc-maven-xml-hello-world/spring3-mvc-maven-xml-hello-world/target/spring3-mvc-maven-xml-hello-world-1.0-SNAPSHOT.war http://34.125.220.76:8080/manager/text/deploy?path=/spring-hello-war
+         run: curl -v -u pradeep:pradeep -T /home/runner/work/SpringContactApp/SpringContactApp/target/SpringContactApp-1.0-SNAPSHOT.war http://34.125.220.76:8080/manager/text/deploy?path=/spring-contact-app
              
