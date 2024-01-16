@@ -17,4 +17,9 @@ jobs:
        - name: building artifacts
          run: mvn package
        - run: ls
+       - name: Step 3 - Use the Upload Artifact GitHub Action
+         uses: actions/upload-artifact@v2
+         with: 
+             name: spring-contact-app
+             path: target/*.war
              
