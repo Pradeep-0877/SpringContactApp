@@ -10,6 +10,8 @@
     <name>SpringContactApp</name>
 
     <properties>
+        <sonar.organization>pradeep-0877</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
