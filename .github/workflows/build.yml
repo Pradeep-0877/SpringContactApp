@@ -20,4 +20,4 @@ jobs:
         cd */
         pwd
      - name: Deploying to Tomcat...
-       run: curl -v -u ${{secrets.TOMCAT_USR}}:${{secrets.TOMCAT_PSW}} -T artifacts/*.war http://34.125.220.76:8080/manager/text/deploy?path=/spring-contact-app
+       run: curl -v -u ${{secrets.TOMCAT_USR}}:${{secrets.TOMCAT_PSW}} -T /home/runner/work/SpringContactApp/SpringContactApp/artifacts/*/*.war http://34.125.220.76:8080/manager/text/deploy?path=/spring-contact-app
