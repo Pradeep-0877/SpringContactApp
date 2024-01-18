@@ -2,7 +2,7 @@ name: ci build
 on: 
   workflow_dispatch:
       inputs: 
-          ARTIFACT_VERSIONE: 
+          ARTIFACT_VERSION: 
              default: v1.0
              required: true
 jobs: 
