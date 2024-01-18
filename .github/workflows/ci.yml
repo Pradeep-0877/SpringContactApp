@@ -30,3 +30,4 @@ jobs:
          with: 
            name: "spring-contact-app-${{ github.event.inputs.ARTIFACT_VERSION }}"
            path: target/*.war
+       - run: ${{ github.event.inputs.ARTIFACT_VERSION }}
