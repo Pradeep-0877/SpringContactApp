@@ -28,5 +28,5 @@ jobs:
        - name: Uploading artifacts to github
          uses: actions/upload-artifact@v3
          with: 
-           name: spring-contact-app-${{ github.event.inputs.ARTIFACT_VERSION }}
+           name: "spring-contact-app-${{ github.event.inputs.ARTIFACT_VERSION }}"
            path: target/*.war
