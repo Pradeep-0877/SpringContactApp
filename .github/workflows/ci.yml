@@ -1,5 +1,10 @@
 name: ci build
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+      inputs: 
+          ARTIFACT_VERSIONE: 
+             default: v1.0
+             required: true
 jobs: 
     build:
       runs-on: ubuntu-latest
@@ -28,4 +33,9 @@ jobs:
          env:
           # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Pradeep-0877_spring3-mvc-maven-xml-hello-world
+         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=pradeep-0877_spring-contact-app
+       - name: Uploading artifacts to github
+         uses: actions/upload-artifact@v3
+         with: 
+           name: ${{ github.event.inputs.ARTIFACT_VERSION }}
+           path: target/*.war
