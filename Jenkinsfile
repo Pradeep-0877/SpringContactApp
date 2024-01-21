@@ -55,7 +55,7 @@ pipeline{
         stage("Upload Artifact to nexus"){
             steps{
                 sh "curl -v -u admin:root --upload-file /var/lib/jenkins/.m2/repository/in/ezeon/SpringContactApp/1.0-SNAPSHOT/SpringContactApp-1.0-SNAPSHOT.war http://34.16.161.58:8081/repository/spring-contact-app/"
-
+            }
         }
 
         stage('Deploy to Tomcat'){
