@@ -52,6 +52,12 @@ pipeline{
               }
             }
         }
+        stage("Upload Artifact to nexus"){
+            steps{
+                nexusArtifactUploader artifacts: [[artifactId: 'maven-war-plugin', classifier: '', file: 'target/*.war', type: 'war']], credentialsId: 'nexus_creds', groupId: 'in.ezeon', nexusUrl: '34.16.161.58:8081/', nexusVersion: 'nexus3', protocol: 'http', repository: 'spring-contact-app', version: '1.0-SNAPSHOT'
+            }
+
+        }
 
         stage('Deploy to Tomcat'){
             when{
