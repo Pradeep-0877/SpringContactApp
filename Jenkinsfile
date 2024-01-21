@@ -5,7 +5,7 @@ pipeline{
     }
     environment{
         NAME='pradeep'
-        BRANCH="master"
+        
     }
     stages{
         
@@ -39,7 +39,7 @@ pipeline{
 
         stage('Deploy to Tomcat'){
             when{
-                environment name: BRANCH, value: BRANCH_NAME
+                environment name: BRANCH_NAME, value: masterE
             }
             environment{
                 TOMCAT_CREDS=credentials('my-tomcat-creds')
