@@ -39,7 +39,7 @@ pipeline{
 
         stage('Deploy to Tomcat'){
             when{
-                environment name: $BRANCH_NAME, value: masterE
+                equals expected: "master", actual: BRANCH_NAME
             }
             environment{
                 TOMCAT_CREDS=credentials('my-tomcat-creds')
