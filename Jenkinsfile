@@ -30,6 +30,9 @@ pipeline{
             when{
                 equals expected: "true", actual: "${params.sonar}"
             }
+            steps{
+                sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=pradeep-0877_spring-contact-app'
+            }
         }
         stage('Build our application'){
             
