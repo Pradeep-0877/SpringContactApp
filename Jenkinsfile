@@ -24,7 +24,7 @@ pipeline{
             steps{
                 sh 'mvn clean install'
                 echo "My name is ${NAME}"
-                echo "Branch name is $BRANCH_NAME"
+                echo "Branch name is $env.BRANCH_NAME"
             }
         }
         stage('Test'){
