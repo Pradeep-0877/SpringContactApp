@@ -29,11 +29,12 @@ pipeline{
             steps{
                 sh 'mvn test'
             }
+            post{
+              success{
+                archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
+              }
+            }
         }
-        post{
-           success{
-              archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
-           }
-        }
+        
     }
 }
