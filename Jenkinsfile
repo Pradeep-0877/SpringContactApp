@@ -5,7 +5,7 @@ pipeline{
     }
     environment{
         NAME='pradeep'
-        BRANCH=master
+        BRANCH="master"
     }
     stages{
         
