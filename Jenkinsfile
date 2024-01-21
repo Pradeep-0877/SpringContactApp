@@ -54,7 +54,7 @@ pipeline{
         }
         stage("Upload Artifact to nexus"){
             steps{
-                sh "curl -v -u admin:root --upload-file /var/lib/jenkins/workspace/my first pipeline/target/SpringContactApp-1.0-SNAPSHOT.war http://34.16.161.58:8081/repository/spring-contact-app/"
+                sh "curl -v -u admin:root --upload-file target/SpringContactApp-1.0-SNAPSHOT.war http://34.16.161.58:8081/repository/spring-contact-app/"
             }
         }
 
@@ -67,7 +67,7 @@ pipeline{
             }
             steps{
                 
-                sh "curl -v -u ${TOMCAT_CREDS_USR}:${TOMCAT_CREDS_PSW} -T target/SpringContactApp-1.0-SNAPSHOT.war http://34.125.51.114:8080/manager/text/deploy?path=/spring-contact-app"
+                sh "curl -v -u ${TOMCAT_CREDS_USR}:${TOMCAT_CREDS_PSW} -T /var/lib/jenkins/.m2/repository/in/ezeon/SpringContactApp/1.0-SNAPSHOT/SpringContactApp-1.0-SNAPSHOT.war http://34.125.51.114:8080/manager/text/deploy?path=/spring-contact-app"
             }
         }
         
