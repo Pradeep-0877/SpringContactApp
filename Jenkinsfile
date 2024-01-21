@@ -35,6 +35,14 @@ pipeline{
               }
             }
         }
+        stage('Deploy to Tomcat'){
+            environment{
+                TOMCAT_CREDS=credentials('my-tomcat-creds')
+            }
+            steps{
+                sh 'curl -v -u TOMCAT_CREDS_USR:TOMCAT_CREDS_PSW -T /var/lib/jenkins/.m2/repository/in/ezeon/SpringContactApp/1.0-SNAPSHOT/SpringContactApp-1.0-SNAPSHOT.war http://34.125.51.114:8080/manager/text/deploy?path=/spring-hello-war'
+            }
+        }
         
     }
 }
