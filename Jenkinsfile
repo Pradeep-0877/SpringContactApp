@@ -7,6 +7,12 @@ pipeline{
         NAME='pradeep'
         
     }
+    parameters[
+        booleanParam(defaultValue: true, description "Do you want sonar code analysys", name: sonar)
+        choice(choices: ["TEST","PROD","QA"], description: "In which environment you want to Deploy to",name: "DEPLOY_TO")
+
+
+    ]
     stages{
         
         stage('Clean Up'){
@@ -20,7 +26,13 @@ pipeline{
                 git 'https://github.com/Pradeep-0877/SpringContactApp.git'
             }
         }
+        stage("perforn sonar"){
+            when{
+                equals expected: "true", actual: "${params.sonar}"
+            }
+        }
         stage('Build our application'){
+            
             steps{
                 sh 'mvn clean install'
                 echo "My name is ${NAME}"
@@ -40,7 +52,7 @@ pipeline{
 
         stage('Deploy to Tomcat'){
             when{
-                equals expected: "master", actual: env.BRANCH_NAME
+                equals expected: "PROD", actual: "${params.DEPLOY_TO}"
             }
             environment{
                 TOMCAT_CREDS=credentials('my-tomcat-creds')
