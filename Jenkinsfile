@@ -54,8 +54,7 @@ pipeline{
         }
         stage("Upload Artifact to nexus"){
             steps{
-                nexusArtifactUploader artifacts: [[artifactId: 'maven-war-plugin', classifier: '', file: 'target/SpringContactApp-1.0-SNAPSHOT.war', type: 'war']], credentialsId: 'nexus_creds', groupId: 'in.ezeon', nexusUrl: '34.16.161.58:8081/', nexusVersion: 'nexus3', protocol: 'http', repository: 'spring-contact-app', version: '1.0-SNAPSHOT'
-            }
+                curl -v -u admin:root --upload-file /var/lib/jenkins/.m2/repository/in/ezeon/SpringContactApp/1.0-SNAPSHOT/SpringContactApp-1.0-SNAPSHOT.war http://34.16.161.58:8081/repository/spring-contact-app/
 
         }
 
