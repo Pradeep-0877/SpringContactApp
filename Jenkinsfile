@@ -7,12 +7,12 @@ pipeline{
         NAME='pradeep'
         
     }
-    parameters[
-        booleanParam(defaultValue: true, description: "Do you want sonar code analysys", name: sonar) ,
+    parameters{
+        booleanParam(defaultValue: true, description: "Do you want sonar code analysys", name: sonar) 
         choice(choices: ["TEST","PROD","QA"], description: "In which environment you want to Deploy to",name: "DEPLOY_TO")
 
 
-    ]
+    }
     stages{
         
         stage('Clean Up'){
