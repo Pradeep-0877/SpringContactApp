@@ -21,5 +21,8 @@ jobs:
               
                 fileName: "app-${{github.event.inputs.artifact-version}}.zip"
                 extract: true
+          - run: |
+               ls
+               pwd
           - name: deploying to tomcat
             run: curl -v -u ${{secrets.TOMCAT_USR}}:${{secrets.TOMCAT_PSW}} -T *.war http://34.125.215.223:8080/manager/text/deploy?path=/spring-contact-app
