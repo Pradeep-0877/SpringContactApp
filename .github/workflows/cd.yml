@@ -26,4 +26,4 @@ jobs:
                ls
                pwd
           - name: deploying to tomcat
-            run: curl -v -u ${{secrets.TOMCAT_USR}}:${{secrets.TOMCAT_PSW}} -T SpringContactApp-1.0-SNAPSHOT.war http://34.125.215.223:8080/manager/text/deploy?path=/spring-contact-app
+            run: curl -v -u ${{secrets.TOMCAT_USR}}:${{secrets.TOMCAT_PSW}} -T /home/runner/work/SpringContactApp/SpringContactAppSpringContactApp-1.0-SNAPSHOT.war http://34.125.215.223:8080/manager/text/deploy?path=/
