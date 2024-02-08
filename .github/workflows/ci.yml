@@ -1,10 +1,7 @@
 name: ci build
-on: 
-  workflow_dispatch:
-      inputs: 
-          ARTIFACT_VERSION: 
-             default: v1.0
-             required: true
+on: workflow_dispatch
+      
+          
 jobs: 
     build:
       runs-on: ubuntu-latest
@@ -28,6 +25,32 @@ jobs:
        - name: Uploading artifacts to github
          uses: actions/upload-artifact@v3
          with: 
-           name: "spring-contact-app-${{ github.event.inputs.ARTIFACT_VERSION }}"
+           name: "spring-contact-app"
            path: target/*.war
        - run: echo "${{ github.event.inputs.ARTIFACT_VERSION }}"
+    Upload_to_release: 
+      needs: build
+      runs-on: ubuntu-latest
+      steps: 
+        - name: Downloading artifacts
+          uses: actions/download-artifact@v3
+          with: 
+            name: spring-contact-app
+        - name: creating release...
+          id: create_release
+          uses: actions/create-release@v1
+          env: 
+            GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          with: 
+            tag_name: v${{github.run_number}}
+            release_name: Release ${{github.run_number}}
+        - name: Upload Release Asset
+          id: upload-release-asset 
+          uses: actions/upload-release-asset@v1
+          env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+                upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+                asset_path: ./app.zip
+                asset_name: app-${{github.run_number}}.zip
+                asset_content_type: application/zip
