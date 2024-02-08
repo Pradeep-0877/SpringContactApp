@@ -36,6 +36,11 @@ jobs:
           uses: actions/download-artifact@v3
           with: 
             name: spring-contact-app
+        - name: Archive Release
+          uses: thedoctor0/zip-release@0.7.5
+          with:
+              type: 'zip'
+              filename: 'app.zip'
         - name: creating release...
           id: create_release
           uses: actions/create-release@v1
