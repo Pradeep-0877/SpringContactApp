@@ -9,7 +9,7 @@ trigger:
 # pool:
 #   vmImage: ubuntu-latest
 jobs:
-  - job: building the application
+  - job: BUILD
     displayName: Building maven app
     pool: 
       vmImage: 'ubuntu-latest'
