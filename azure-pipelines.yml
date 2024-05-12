@@ -10,7 +10,7 @@ stages:
     - script: |
         echo "stage 1 building"
 - stage: Test
-  dependsOn: bild
+  dependsOn: build
   jobs: 
   - job: test
     pool: 
